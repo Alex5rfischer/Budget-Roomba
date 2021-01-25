@@ -154,7 +154,7 @@
         android:layout_height="wrap_content"
         android:text=">"
         android:textSize="18sp"
-        android:background="@drawable/button"
+        android:background="@drawable/registrationbutton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.893"
