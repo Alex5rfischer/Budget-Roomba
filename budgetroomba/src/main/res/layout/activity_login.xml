@@ -67,7 +67,7 @@
         app:layout_constraintVertical_bias="0.257" />
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress"
+        android:id="@+id/loginEmail"
         android:layout_width="349dp"
         android:layout_height="40dp"
         android:ems="10"
@@ -82,7 +82,7 @@
         app:layout_constraintVertical_bias="0.452" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/loginPassword"
         android:layout_width="349dp"
         android:layout_height="40dp"
         android:ems="10"
@@ -126,7 +126,7 @@
 <!--    Android default color is Purple in the latest Android Studio version. To change the color of the Button, you need to add a single line of code in the XML i.e. That's all! add app:backgroundTint="@null" and after that your background color will appear.-->
     <Button
         app:backgroundTint="@null"
-        android:id="@+id/button"
+        android:id="@+id/loginbtn"
         android:layout_width="100sp"
         android:layout_height="wrap_content"
         android:text=">"
@@ -138,6 +138,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.912" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="2dp"
+        android:layout_height="2dp"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.038"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.021"
+        tools:ignore="MissingConstraints" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

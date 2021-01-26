@@ -1,27 +1,114 @@
 package capstone.project.budgetroomba;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class Login extends AppCompatActivity {
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+
+import org.w3c.dom.Text;
+
+public class Login extends AppCompatActivity implements View.OnClickListener{
+
+    private TextView register;
+    private EditText editTextEmail, editTextPassword;
+    private Button signIn;
+
+    private FirebaseAuth mAuth;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        TextView textView = findViewById(R.id.signuptab);
+        register = findViewById(R.id.signuptab);
+        register.setOnClickListener(this);
 
-        textView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        signIn = (Button)findViewById(R.id.loginbtn);
+        signIn.setOnClickListener(this);
+
+        editTextEmail = (EditText)findViewById(R.id.loginEmail);
+        editTextPassword = (EditText)findViewById(R.id.loginPassword);
+
+        progressBar = (ProgressBar)findViewById(R.id.progressBar);
+
+        mAuth = FirebaseAuth.getInstance();
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.signuptab:
                 Intent intent = new Intent(Login.this, Registration.class);
                 startActivity(intent);
+                break;
+
+            case R.id.loginbtn:
+                userLogin();
+                break;
+        }
+    }
+
+    private void userLogin()
+    {
+        String email= editTextEmail.getText().toString().trim();
+        String password = editTextPassword.getText().toString().trim();
+
+        if(email.isEmpty())
+        {
+            editTextEmail.setError("Email is required");
+            editTextEmail.requestFocus();
+            return;
+        }
+
+        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches())
+        {
+            editTextEmail.setError("Email entered is not valid");
+            editTextEmail.requestFocus();
+            return;
+        }
+
+        if(password.isEmpty())
+        {
+            editTextPassword.setError("Password is required");
+            editTextPassword.requestFocus();
+            return;
+        }
+
+        if(password.length()<6)
+        {
+            editTextPassword.setError("Must have a minimum of 6 characters");
+            editTextPassword.requestFocus();
+            return;
+        }
+
+        progressBar.setVisibility(View.VISIBLE);
+
+        mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful())
+                {
+                    //redirect to user profile
+                    Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_LONG).show();
+                }else{
+                    Toast.makeText(Login.this, "Login Unsucessful", Toast.LENGTH_LONG).show();
+                }
             }
         });
+
     }
 }
