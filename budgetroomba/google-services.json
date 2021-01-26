@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "692813627288",
+    "project_id": "budgetroomba-7674d",
+    "storage_bucket": "budgetroomba-7674d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:692813627288:android:d35522708fda52081275ed",
+        "android_client_info": {
+          "package_name": "capstone.project.budgetroomba"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "692813627288-hb8eba9j5hmf8el5rbc5r5c3mq29n02g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMJtHiUTCYL8cgDlUR1qVjkvwHRFOv-ns"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "692813627288-hb8eba9j5hmf8el5rbc5r5c3mq29n02g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
