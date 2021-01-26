@@ -23,7 +23,7 @@ import org.w3c.dom.Text;
 
 public class Login extends AppCompatActivity implements View.OnClickListener{
 
-    private TextView register;
+    private TextView register, forgotPassword;
     private EditText editTextEmail, editTextPassword;
     private Button signIn;
 
@@ -46,6 +46,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
 
         progressBar = (ProgressBar)findViewById(R.id.progressBar);
 
+        forgotPassword = findViewById(R.id.forgotpasswordbtn);
+        forgotPassword.setOnClickListener(this);
+
         mAuth = FirebaseAuth.getInstance();
     }
 
@@ -59,6 +62,10 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
 
             case R.id.loginbtn:
                 userLogin();
+                break;
+
+            case R.id.forgotpasswordbtn:
+                startActivity(new Intent(this,ForgotPassword.class));
                 break;
         }
     }
