@@ -17,6 +17,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import org.w3c.dom.Text;
 
@@ -102,9 +103,21 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful())
                 {
-                    //redirect to user profile
-                    Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_LONG).show();
+                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+                    if(user.isEmailVerified())
+                    {
+                        //redirect to user profile
+                        //Create the main activity and redirect to it from this block of code
+                        Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_LONG).show();
+                    }else{
+                        user.sendEmailVerification();
+                        Toast.makeText(Login.this, "Verify your account by going to your email", Toast.LENGTH_LONG).show();
+                    }
+
                 }else{
+                    editTextPassword.setError("Email maybe incorrect");
+                    editTextEmail.setError("Password maybe incorrect");
                     Toast.makeText(Login.this, "Login Unsucessful", Toast.LENGTH_LONG).show();
                 }
             }
