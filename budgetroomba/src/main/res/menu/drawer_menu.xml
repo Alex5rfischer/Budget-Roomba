@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item android:title="Settings">
+            <menu>
+                <item
+                    android:id="@+id/nav_Language"
+                    android:title="Language" />
+
+                <item
+                    android:id="@+id/nav_HelpCenter"
+                    android:title="Help Center" />
+
+                <item
+                    android:id="@+id/nav_About"
+                    android:title="About" />
+
+                <item
+                    android:id="@+id/nav_ContactUs"
+                    android:title="Contact Us" />
+
+                <item
+                    android:id="@+id/nav_Password"
+                    android:title="Change Password" />
+            </menu>
+        </item>
+
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_Logout"
+                android:title="Logout" />
+        </menu>
+    </item>
+</menu>
