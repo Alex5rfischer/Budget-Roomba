@@ -5,7 +5,7 @@
     android:layout_height="176dp"
     android:gravity="bottom"
     android:padding="16dp"
-    android:background="@color/grey"
+    android:background="@color/red"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <ImageView
@@ -17,13 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="8dp"
-        android:text="Codding in Flow"
+        android:text="Budget Roomba"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="info@coding.com"/>
-
 
 </LinearLayout>

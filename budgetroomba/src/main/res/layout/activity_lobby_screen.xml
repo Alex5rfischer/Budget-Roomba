@@ -7,7 +7,7 @@
     tools:context=".LobbyScreen"
     android:id="@+id/drawer_layout"
     android:fitsSystemWindows="true"
-    android:background="@drawable/main">
+    android:background="@drawable/lobbypage">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,16 +17,57 @@
         <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/grey"
+            android:background="@color/red"
             android:id="@+id/toolbar"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             android:elevation="4dp"/>
 
-        <FrameLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/fragment_container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent">
+
+             <Button
+                android:id="@+id/executionBtn"
+                android:layout_width="225dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/executionbutton"
+                android:text="Start/Stop"
+                app:backgroundTint="@null"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.502"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.816" />
+
+            <ImageButton
+                android:id="@+id/imageButton7"
+                android:layout_width="98dp"
+                android:layout_height="96dp"
+                android:background="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.979"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.976"
+                app:srcCompat="@drawable/additionsign" />
+
+            <!--            <Button-->
+<!--                android:id="@+id/button3"-->
+<!--                android:layout_width="75dp"-->
+<!--                android:layout_height="73dp"-->
+<!--                android:background="@drawable/circlebtn"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintHorizontal_bias="0.955"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent"-->
+<!--                app:layout_constraintVertical_bias="0.935" />-->
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
 
