@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -33,13 +34,36 @@ public class LobbyScreen extends AppCompatActivity implements NavigationView.OnN
 
     private DrawerLayout drawer;
     private ImageButton additionBtn;
-
+    private static final String TAG = "MyActivity";
+    DatabaseReference reference;
+    TextView result;
+    String status;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lobby_screen);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
+        result = (TextView)findViewById(R.id.resultTv);
+        reference = FirebaseDatabase.getInstance().getReference();
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot != null)
+                {
+                    status = snapshot.child("HC-SR04/1-Real-Time/DISTANCE").getValue().toString();
+                    result.setText(status);
+                }else{
+                    Log.d(TAG,"Data Snapshot is null");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.d(TAG,"Database Error");
+            }
+        });
+
 
 
         setSupportActionBar(toolbar);
