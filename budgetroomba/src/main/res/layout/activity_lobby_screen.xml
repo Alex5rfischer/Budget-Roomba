@@ -29,11 +29,11 @@
             android:layout_height="match_parent">
 
              <Button
-                android:id="@+id/executionBtn"
+                android:id="@+id/startBtn"
                 android:layout_width="225dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/executionbutton"
-                android:text="Start/Stop"
+                android:text="Start"
                 app:backgroundTint="@null"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -41,19 +41,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.816" />
-
-            <ImageButton
-                android:id="@+id/imageButton7"
-                android:layout_width="98dp"
-                android:layout_height="96dp"
-                android:background="@color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.979"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.976"
-                app:srcCompat="@drawable/additionsign" />
 
             <TextView
                 android:id="@+id/resultTv"

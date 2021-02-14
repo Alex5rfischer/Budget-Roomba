@@ -13,6 +13,8 @@ import android.os.Bundle;
 import android.os.Message;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,7 +37,8 @@ public class LobbyScreen extends AppCompatActivity implements NavigationView.OnN
     private DrawerLayout drawer;
     private ImageButton additionBtn;
     private static final String TAG = "MyActivity";
-    DatabaseReference reference;
+    DatabaseReference reference, runState;
+    Button on,off;
     TextView result;
     String status;
     @Override
@@ -44,8 +47,32 @@ public class LobbyScreen extends AppCompatActivity implements NavigationView.OnN
         setContentView(R.layout.activity_lobby_screen);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
+        on = (Button)findViewById(R.id.startBtn);
         result = (TextView)findViewById(R.id.resultTv);
         reference = FirebaseDatabase.getInstance().getReference();
+        runState = FirebaseDatabase.getInstance().getReference();
+
+        runState.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                on.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        FirebaseDatabase database = FirebaseDatabase.getInstance();
+                        DatabaseReference myRef = database.getReference("HC-SR04/0-STATE/RUN_STATE");
+                        myRef.setValue(1);
+                    }
+                });
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -63,8 +90,6 @@ public class LobbyScreen extends AppCompatActivity implements NavigationView.OnN
                 Log.d(TAG,"Database Error");
             }
         });
-
-
 
         setSupportActionBar(toolbar);
         NavigationView navigationView = findViewById(R.id.nav_view);
