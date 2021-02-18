@@ -44,7 +44,7 @@ public class LobbyScreen extends AppCompatActivity implements NavigationView.OnN
     private DrawerLayout drawer;
     private ImageButton additionBtn;
     private static final String TAG = "MyActivity";
-    DatabaseReference reference, runState;
+    DatabaseReference reference, runState, rootDatabaseReferenceDelete;
     Button on,off, changeLanguage;
     TextView result;
     String status;
@@ -59,6 +59,9 @@ public class LobbyScreen extends AppCompatActivity implements NavigationView.OnN
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         on = (Button)findViewById(R.id.startBtn);
+        off = (Button)findViewById(R.id.stopBtn);
+
+        rootDatabaseReferenceDelete = FirebaseDatabase.getInstance().getReference().child("HC-SR04");
         result = (TextView)findViewById(R.id.resultTv);
         reference = FirebaseDatabase.getInstance().getReference();
         runState = FirebaseDatabase.getInstance().getReference();
@@ -75,7 +78,16 @@ public class LobbyScreen extends AppCompatActivity implements NavigationView.OnN
                     }
                 });
 
+                off.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+//                        FirebaseDatabase database = FirebaseDatabase.getInstance();
+//                        DatabaseReference myRef = database.getReference("/HC-SR04/0-STATE/RUN_STATE");
+//                        myRef.setValue(0);
 
+                        rootDatabaseReferenceDelete.child("0-STATE").child("RUN_STATE").setValue(null);
+                    }
+                });
             }
 
             @Override

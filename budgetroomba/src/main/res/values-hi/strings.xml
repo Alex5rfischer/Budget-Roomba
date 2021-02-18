@@ -30,4 +30,5 @@
     <string name="communicate">संवाद</string>
     <string name="schedule">अनुसूची</string>
     <string name="logout">लॉग आउट</string>
+    <string name="stop">Stop</string>
 </resources>
