@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Roomba économique</string>
+    <string name="navigation_drawer_open">Ouvrir le tiroir de navigation</string>
+    <string name="navigation_drawer_close">Close Navigation drawer</string>
+    <string name="enter_your_email">Fermer le panneau de navigation</string>
+    <string name="reset_password">réinitialiser le mot de passe</string>
+    <string name="start">Début</string>
+    <string name="results">Résultats</string>
+    <string name="sensor_return_value">Valeur de retour du capteur</string>
+    <string name="login">Connexion</string>
+    <string name="sign_up">Sinscrire</string>
+    <string name="welcome_back">Content de te revoir,</string>
+    <string name="we_missed_you">Tu nous as manqué.</string>
+    <string name="forgot_password">Mot de passe oublié?</string>
+    <string name="right_arrow">></string>
+    <string name="nice_to_meet">Enchanté de vous rencontrer</string>
+    <string name="youcomma">Tue,</string>
+    <string name="enter_your_information_below_or">Entrez vos informations ci-dessous ou</string>
+    <string name="login_with_a_social_account">se connecter avec un compte social</string>
+    <string name="password">Mot de passe</string>
+    <string name="password_again">Mot de passe à nouveau</string>
+    <string name="email_address">Adresse e-mail</string>
+
+    <string name="settings">Réglages</string>
+    <string name="language">Langue</string>
+    <string name="help_center">Centre d\'aide</string>
+    <string name="about">À propos de</string>
+    <string name="contact_us">Nous contacter</string>
+    <string name="change_password">Changer le mot de passe</string>
+    <string name="communicate">Communiquer</string>
+    <string name="schedule">Horaire</string>
+    <string name="logout">Se déconnecter</string>
+</resources>

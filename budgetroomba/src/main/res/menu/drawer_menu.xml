@@ -4,41 +4,41 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
-        <item android:title="Settings">
+        <item android:title="@string/settings">
             <menu>
                 <item
                     android:id="@+id/nav_Language"
-                    android:title="Language" />
+                    android:title="@string/language" />
 
                 <item
                     android:id="@+id/nav_HelpCenter"
-                    android:title="Help Center" />
+                    android:title="@string/help_center" />
 
                 <item
                     android:id="@+id/nav_About"
-                    android:title="About" />
+                    android:title="@string/about" />
 
                 <item
                     android:id="@+id/nav_ContactUs"
-                    android:title="Contact Us" />
+                    android:title="@string/contact_us" />
 
                 <item
                     android:id="@+id/nav_Password"
-                    android:title="Change Password" />
+                    android:title="@string/change_password" />
             </menu>
         </item>
 
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="@string/communicate">
         <menu>
             <item
                 android:id="@+id/nav_Schedule"
-                android:title="Schedule" />
+                android:title="@string/schedule" />
 
             <item
                 android:id="@+id/nav_Logout"
-                android:title="Logout" />
+                android:title="@string/logout" />
         </menu>
     </item>
 </menu>

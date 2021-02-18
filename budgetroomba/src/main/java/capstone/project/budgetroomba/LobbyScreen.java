@@ -1,14 +1,20 @@
 package capstone.project.budgetroomba;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
+import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Message;
 import android.util.Log;
@@ -31,6 +37,7 @@ import com.google.firebase.database.ValueEventListener;
 import org.w3c.dom.Text;
 
 import java.text.MessageFormat;
+import java.util.Locale;
 
 public class LobbyScreen extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -38,13 +45,17 @@ public class LobbyScreen extends AppCompatActivity implements NavigationView.OnN
     private ImageButton additionBtn;
     private static final String TAG = "MyActivity";
     DatabaseReference reference, runState;
-    Button on,off;
+    Button on,off, changeLanguage;
     TextView result;
     String status;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        loadLocale();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lobby_screen);
+
+        //ActionBar actionBar = getSupportActionBar();
+        //actionBar.setTitle(getResources().getString(R.string.app_title));
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         on = (Button)findViewById(R.id.startBtn);
@@ -59,7 +70,7 @@ public class LobbyScreen extends AppCompatActivity implements NavigationView.OnN
                     @Override
                     public void onClick(View view) {
                         FirebaseDatabase database = FirebaseDatabase.getInstance();
-                        DatabaseReference myRef = database.getReference("HC-SR04/0-STATE/RUN_STATE");
+                        DatabaseReference myRef = database.getReference("/HC-SR04/0-STATE/RUN_STATE");
                         myRef.setValue(1);
                     }
                 });
@@ -109,7 +120,7 @@ public class LobbyScreen extends AppCompatActivity implements NavigationView.OnN
         {
             case R.id.nav_Language:
                 //Create an activity where they can choose between french and english
-                Toast.makeText(this, "Still in testing", Toast.LENGTH_SHORT).show();
+                showChangeLanugageDialog();
                 break;
 
             case R.id.nav_HelpCenter:
@@ -143,6 +154,62 @@ public class LobbyScreen extends AppCompatActivity implements NavigationView.OnN
 
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void showChangeLanugageDialog() {
+        //Array of languages to display in alert dialog
+        final String[] listItems = {"English", "French", "Hindi"};
+        AlertDialog.Builder mBuilder = new AlertDialog.Builder(LobbyScreen.this);
+        mBuilder.setTitle("Choose Languages");
+        mBuilder.setSingleChoiceItems(listItems, -1, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                if(i == 0)
+                {
+                    //French
+                    setLocale("en");
+                    recreate();
+                }
+                else if(i == 1)
+                {
+                    //French
+                    setLocale("fr");
+                    recreate();
+                }
+                else if(i == 2)
+                {
+                    //Hinidi
+                    setLocale("hi");
+                    recreate();
+                }
+
+                //Dismiss alert Dialog when language is selected
+                dialogInterface.dismiss();
+            }
+        });
+        AlertDialog mDialog = mBuilder.create();
+        //show alert dialog
+        mDialog.show();
+    }
+
+    private void setLocale(String language) {
+        Locale locale = new Locale(language);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
+        //save data to shared preference
+        SharedPreferences.Editor editor = getSharedPreferences("Settings", MODE_PRIVATE).edit();
+        editor.putString("My_Languages", language);
+        editor.apply();
+    }
+
+    //Load language saved in shared prefereneces
+    public void loadLocale()
+    {
+        SharedPreferences prefs = getSharedPreferences("Settings", Activity.MODE_PRIVATE);
+        String language = prefs.getString("My_Languages", "");
+        setLocale(language);
     }
 
 

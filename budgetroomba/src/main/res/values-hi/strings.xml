@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">बजट कक्ष</string>
+    <string name="navigation_drawer_open">Open Navigation drawer</string>
+    <string name="navigation_drawer_close">नेविगेशन दराज खोलें</string>
+    <string name="enter_your_email">अपना ईमेल दर्ज करें</string>
+    <string name="reset_password">पासवर्ड रीसेट</string>
+    <string name="start">शुरू</string>
+    <string name="results">परिणाम</string>
+    <string name="sensor_return_value">सेंसर रिटर्न वैल्यू</string>
+    <string name="login">लॉग इन करें</string>
+    <string name="sign_up">साइन अप करें</string>
+    <string name="welcome_back">वापसी पर स्वागत है,</string>
+    <string name="we_missed_you">हमने आपको याद किया.</string>
+    <string name="forgot_password">पासवर्ड भूल गए?</string>
+    <string name="right_arrow">></string>
+    <string name="nice_to_meet">मिलकर अच्छा लगा</string>
+    <string name="youcomma">आप,</string>
+    <string name="enter_your_information_below_or">नीचे अपनी जानकारी दर्ज करें या</string>
+    <string name="login_with_a_social_account">एक सामाजिक खाते के साथ लॉगिन करें</string>
+    <string name="password">कुंजिका</string>
+    <string name="password_again">कूटशब्द दुबारा भरें</string>
+    <string name="email_address">ईमेल पता</string>
+    <string name="settings">समायोजन</string>
+    <string name="language">भाषा: हिन्दी</string>
+    <string name="help_center">सहायता केंद्र</string>
+    <string name="about">के बारे में</string>
+    <string name="contact_us">संपर्क करें</string>
+    <string name="change_password">पासवर्ड बदलें</string>
+    <string name="communicate">संवाद</string>
+    <string name="schedule">अनुसूची</string>
+    <string name="logout">लॉग आउट</string>
+</resources>
