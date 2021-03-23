@@ -18,9 +18,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
-//import com.google.firebase.database.FirebaseDatabase;
-//
-//import org.w3c.dom.Text;
+
+import at.favre.lib.crypto.bcrypt.BCrypt;
 
 public class Registration extends AppCompatActivity {
 
@@ -110,7 +109,21 @@ public class Registration extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            User user = new User(email, password, repeatPassword);
+                            String hashPassword = "$2a$12$US00g/uMhoSBm.HiuieBjeMtoN69SN.GE25fCpldebzkryUyopws6" + password + "#@$%2aunti!@#*&%#$gfbu";
+                            String bcryptHashString = BCrypt.withDefaults().hashToString(12, hashPassword.toCharArray());
+                            BCrypt.Result result = BCrypt.verifyer().verify(hashPassword.toCharArray(), bcryptHashString);
+
+                            String rehashPassword = "$2a$12$US00g/uMhoSBm.HiuieBjeMtoN69SN.GE25fCpldebzkryUyopws6" + repeatPassword + "#@$%2aunti!@#*&%#$gfbu";
+                            String rebcryptHashString = BCrypt.withDefaults().hashToString(12, rehashPassword.toCharArray());
+                            BCrypt.Result reresult = BCrypt.verifyer().verify(rehashPassword.toCharArray(), rebcryptHashString);
+
+                            if(result.verified)
+                            {
+//                                Toast.makeText(Registration.this, "Success", Toast.LENGTH_SHORT).show();
+                            }else{
+                                Toast.makeText(Registration.this, "Fail-Hashing", Toast.LENGTH_SHORT).show();
+                            }
+                            User user = new User(email, hashPassword, rehashPassword);
                             FirebaseDatabase.getInstance().getReference("Users")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                     .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {

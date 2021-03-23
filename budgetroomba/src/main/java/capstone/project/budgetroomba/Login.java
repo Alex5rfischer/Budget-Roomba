@@ -189,7 +189,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                         //Create the main activity and redirect to it from this block of code
                         Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_LONG).show();
 
-                        Intent intent = new Intent(Login.this,LobbyScreen.class);
+                        Intent intent = new Intent(Login.this, LobbyScreen.class);
                         startActivity(intent);
                     }else{
                         user.sendEmailVerification();
