@@ -15,6 +15,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Message;
 import android.util.Log;
@@ -25,6 +26,13 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -45,14 +53,31 @@ public class LobbyScreen extends AppCompatActivity implements NavigationView.OnN
     private ImageButton additionBtn;
     private static final String TAG = "MyActivity";
     DatabaseReference reference, runState, rootDatabaseReferenceDelete;
-    Button on,off, changeLanguage;
-    TextView result;
+    GoogleSignInClient mGoogleSignInClient;
+    Button on,off, changeLanguage, signOut;
+    TextView result, state;
     String status;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         loadLocale();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lobby_screen);
+
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+
+        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
+        if (acct != null) {
+            String personName = acct.getDisplayName();
+//            String personGivenName = acct.getGivenName();
+//            String personFamilyName = acct.getFamilyName();
+            String personEmail = acct.getEmail();
+            String personId = acct.getId();
+            Uri personPhoto = acct.getPhotoUrl();
+
+            //Glide.with(this).load(String.valueOf(personPhoto).into(imageView);
+        }
 
         //ActionBar actionBar = getSupportActionBar();
         //actionBar.setTitle(getResources().getString(R.string.app_title));
@@ -63,6 +88,7 @@ public class LobbyScreen extends AppCompatActivity implements NavigationView.OnN
 
         rootDatabaseReferenceDelete = FirebaseDatabase.getInstance().getReference().child("HC-SR04");
         result = (TextView)findViewById(R.id.resultTv);
+        //state = (TextView)findViewById(R.id.resultIntroTv);
         reference = FirebaseDatabase.getInstance().getReference();
         runState = FirebaseDatabase.getInstance().getReference();
 
@@ -72,6 +98,8 @@ public class LobbyScreen extends AppCompatActivity implements NavigationView.OnN
                 on.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        final TextView textViewToChange = (TextView) findViewById(R.id.resultIntroTv);
+                        textViewToChange.setText("DEVICE STATE: ON");
                         FirebaseDatabase database = FirebaseDatabase.getInstance();
                         DatabaseReference myRef = database.getReference("/HC-SR04/0-STATE/RUN_STATE");
                         myRef.setValue(1);
@@ -81,6 +109,8 @@ public class LobbyScreen extends AppCompatActivity implements NavigationView.OnN
                 off.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        final TextView textViewToChange = (TextView) findViewById(R.id.resultIntroTv);
+                        textViewToChange.setText("DEVICE STATE: OFF");
 //                        FirebaseDatabase database = FirebaseDatabase.getInstance();
 //                        DatabaseReference myRef = database.getReference("/HC-SR04/0-STATE/RUN_STATE");
 //                        myRef.setValue(0);
@@ -123,6 +153,17 @@ public class LobbyScreen extends AppCompatActivity implements NavigationView.OnN
                 R.string.navigation_drawer_open,R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+    }
+
+    private void signOut() {
+        mGoogleSignInClient.signOut()
+                .addOnCompleteListener(this, new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        Toast.makeText(LobbyScreen.this, "Signed out successfully",  Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
+                });
     }
 
     @Override

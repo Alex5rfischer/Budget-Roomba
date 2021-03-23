@@ -7,7 +7,7 @@
     tools:context=".LobbyScreen"
     android:id="@+id/drawer_layout"
     android:fitsSystemWindows="true"
-    android:background="@drawable/lobbypage">
+    android:background="@drawable/homepage">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,8 +17,9 @@
         <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/red"
             android:id="@+id/toolbar"
+            android:tooltipText="@string/app_name"
+            android:textAlignment="center"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             android:elevation="4dp"/>
@@ -28,58 +29,96 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-             <Button
+            <Button
                 android:id="@+id/startBtn"
-                android:layout_width="225dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/executionbutton"
+                android:layout_width="134dp"
+                android:layout_height="112dp"
+                android:background="@drawable/button"
                 android:text="@string/start"
+                android:textColor="@color/white"
                 app:backgroundTint="@null"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.502"
+                app:layout_constraintHorizontal_bias="0.146"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.816" />
+                app:layout_constraintVertical_bias="0.842" />
 
             <Button
                 android:id="@+id/stopBtn"
-                android:layout_width="225dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/executionbutton"
+                android:layout_width="134dp"
+                android:layout_height="112dp"
+                android:background="@drawable/button"
                 android:text="@string/stop"
+                android:textColor="@color/white"
                 app:backgroundTint="@null"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.881"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.92" />
-
-            <TextView
-                android:id="@+id/resultTv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/results"
-                android:textSize="22dp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.415" />
+                app:layout_constraintVertical_bias="0.841" />
 
             <TextView
                 android:id="@+id/resultIntroTv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/sensor_return_value"
-                android:textSize="20dp"
+                android:layout_width="398dp"
+                android:layout_height="55dp"
+                android:fontFamily="@font/bold"
+                android:text="@string/budget_roomba"
+                android:textAlignment="center"
+                android:textSize="35dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.496"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.087" />
+
+            <TextView
+                android:id="@+id/resultTv"
+                android:layout_width="117dp"
+                android:layout_height="80dp"
+                android:fontFamily="@font/light"
+                android:textColor="@color/white"
+                android:text="23"
+                android:textAlignment="center"
+                android:textSize="60dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.339" />
+                app:layout_constraintVertical_bias="0.208" />
+
+            <TextView
+                android:id="@+id/PowerBy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@string/powered_by"
+                android:fontFamily="@font/light"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.082"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.961" />
+
+            <TextView
+                android:id="@+id/Budgetroomba"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/light"
+                android:text="@string/budget_roomba"
+                android:textColor="@color/red"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.365"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.961" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

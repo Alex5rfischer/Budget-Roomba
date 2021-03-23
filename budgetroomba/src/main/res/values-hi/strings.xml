@@ -30,5 +30,7 @@
     <string name="communicate">संवाद</string>
     <string name="schedule">अनुसूची</string>
     <string name="logout">लॉग आउट</string>
-    <string name="stop">Stop</string>
+    <string name="stop">रुकें</string>
+    <string name="powered_by">वारा संचालित</string>
+    <string name="budget_roomba">Budget Roomba</string>
 </resources>

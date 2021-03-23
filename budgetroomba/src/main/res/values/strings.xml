@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Budgetroomba</string>
+    <string name="app_name"> </string>
     <string name="navigation_drawer_open">Open Navigation drawer</string>
     <string name="navigation_drawer_close">Close Navigation drawer</string>
     <string name="enter_your_email">Enter Your Email</string>
@@ -30,4 +30,6 @@
     <string name="schedule">Schedule</string>
     <string name="logout">Logout</string>
     <string name="stop">Stop</string>
+    <string name="budget_roomba">Budget Roomba</string>
+    <string name="powered_by">Powered by</string>
 </resources>

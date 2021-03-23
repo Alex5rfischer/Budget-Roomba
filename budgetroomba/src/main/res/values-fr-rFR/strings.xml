@@ -31,5 +31,7 @@
     <string name="communicate">Communiquer</string>
     <string name="schedule">Horaire</string>
     <string name="logout">Se déconnecter</string>
-    <string name="stop">Stop</string>
+    <string name="stop">Arrêter</string>
+    <string name="powered_by">Alimenté par</string>
+    <string name="budget_roomba">Budget Roomba</string>
 </resources>

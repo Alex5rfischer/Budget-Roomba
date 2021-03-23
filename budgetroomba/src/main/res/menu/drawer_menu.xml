@@ -30,11 +30,8 @@
 
     </group>
 
-    <item android:title="@string/communicate">
+    <item android:title="Operation">
         <menu>
-            <item
-                android:id="@+id/nav_Schedule"
-                android:title="@string/schedule" />
 
             <item
                 android:id="@+id/nav_Logout"
