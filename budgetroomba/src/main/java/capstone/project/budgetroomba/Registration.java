@@ -110,19 +110,8 @@ public class Registration extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             String hashPassword = "$2a$12$US00g/uMhoSBm.HiuieBjeMtoN69SN.GE25fCpldebzkryUyopws6" + password + "#@$%2aunti!@#*&%#$gfbu";
-                            String bcryptHashString = BCrypt.withDefaults().hashToString(12, hashPassword.toCharArray());
-                            BCrypt.Result result = BCrypt.verifyer().verify(hashPassword.toCharArray(), bcryptHashString);
 
                             String rehashPassword = "$2a$12$US00g/uMhoSBm.HiuieBjeMtoN69SN.GE25fCpldebzkryUyopws6" + repeatPassword + "#@$%2aunti!@#*&%#$gfbu";
-                            String rebcryptHashString = BCrypt.withDefaults().hashToString(12, rehashPassword.toCharArray());
-                            BCrypt.Result reresult = BCrypt.verifyer().verify(rehashPassword.toCharArray(), rebcryptHashString);
-
-                            if(result.verified)
-                            {
-//                                Toast.makeText(Registration.this, "Success", Toast.LENGTH_SHORT).show();
-                            }else{
-                                Toast.makeText(Registration.this, "Fail-Hashing", Toast.LENGTH_SHORT).show();
-                            }
                             User user = new User(email, hashPassword, rehashPassword);
                             FirebaseDatabase.getInstance().getReference("Users")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
@@ -131,6 +120,8 @@ public class Registration extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
                                         Toast.makeText(Registration.this, "Successfully Registered", Toast.LENGTH_LONG).show();
+                                        Intent intent = new Intent(Registration.this, Login.class);
+                                        startActivity(intent);
                                         progressBar.setVisibility(View.VISIBLE);
 
                                     } else {
