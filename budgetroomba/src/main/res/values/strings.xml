@@ -15,8 +15,8 @@
     <string name="right_arrow">></string>
     <string name="nice_to_meet">Nice To Meet</string>
     <string name="youcomma">You,</string>
-    <string name="enter_your_information_below_or">Enter your information below or</string>
-    <string name="login_with_a_social_account">login with a social account</string>
+    <string name="enter_your_information_below_or">To sign up, please enter your</string>
+    <string name="login_with_a_social_account">information below.</string>
     <string name="password">Password</string>
     <string name="password_again">Password again</string>
     <string name="email_address">Email Address</string>
