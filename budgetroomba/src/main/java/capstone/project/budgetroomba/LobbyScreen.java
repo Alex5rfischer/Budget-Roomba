@@ -48,6 +48,8 @@ import java.text.MessageFormat;
 import java.util.Locale;
 
 public class LobbyScreen extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+//
+    //
 
     private DrawerLayout drawer;
     private ImageButton additionBtn;
@@ -75,10 +77,10 @@ public class LobbyScreen extends AppCompatActivity implements NavigationView.OnN
             String personEmail = acct.getEmail();
             String personId = acct.getId();
             Uri personPhoto = acct.getPhotoUrl();
-
+//Review
             //Glide.with(this).load(String.valueOf(personPhoto).into(imageView);
-        }
-
+        }//
+//
         //ActionBar actionBar = getSupportActionBar();
         //actionBar.setTitle(getResources().getString(R.string.app_title));
 
